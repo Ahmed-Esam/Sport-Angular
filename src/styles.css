@@ -2,3 +2,66 @@
 
 .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9{ float: right;}
 .thumbnail {text-align: right;}
+.img-cont {
+  padding: 15px;
+  border-top: 2px solid #FFF;
+  border-right: 10px solid #F6F6F6;
+  text-align: right;
+}
+.img-cont img {
+  border: 1px solid #666;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+.position-relative {
+  position: relative;
+}
+.inner--image img {
+  border-radius: 10px 0 10px 0;
+}
+
+.w-100 {
+  width: 100%!important;
+}
+img {
+  max-width: 100%;
+}
+.font-weight-bold {
+  font-weight: 700!important;
+}
+.f-30 {
+  font-size: 30px!important;
+}
+.mt-4, .my-4 {
+  margin-top: 1.5rem!important;
+  margin-bottom: 1.5rem!important;
+}
+.read--more--bullet .article--image {
+  position: relative;
+  height: 180px!important;
+  min-height: 120px;
+  width: 100%;
+  min-width: 160px;
+  margin-top: 20px;
+}
+.read--more--bullet .article--image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.article--content{
+  font-size: 20px;
+  font-weight: 700;
+  color: #232323;
+  display: inline-block;
+}
+.pstyle{
+  padding: 40px 0;
+    font-family: Tajawal,sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.Pdate {color: red;font: 1em sans-serif bold;}

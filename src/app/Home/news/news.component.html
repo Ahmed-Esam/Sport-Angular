@@ -1,15 +1,49 @@
 <div class="container">
   <div class="row">
-      <div class="col-sm-6 col-md-8">
-        <div class="thumbnail">
-          <img *ngIf='news.mainImage !== undefined' src={{news.mainImage.imagesUrls.lowOriginal}} alt={{news.title}}>
-          <div class="caption">
-            <h3>{{news.title}}</h3>
-            <p *ngFor="let item of news.content">{{ item.content }}</p>
-            <p>{{news.publishedAtFormatted}}</p>
+    <div [ngClass]="['col-sm-6', 'col-md-8', 'thumbnail']">
+      <div *ngIf="news !== undefined" [ngClass]="['position-relative', 'my-4 ', 'inner--image']">
+        <img [ngClass]="['w-100']"  src="{{ news.mainImage.imagesUrls.big }}" alt="{{ news.title }}" />
+        <div class="caption">
+          <h3 >{{ news.title }}</h3>
+          <div *ngFor="let item of news.content">
+            <p
+            *ngIf="item.type === 'paragraph'; else elseifTemplate"
+            [innerHTML]="item.content"></p>
+            <ng-template #elseifTemplate>
+              <ng-container *ngIf="item.type === 'image'; else elseif2Template" >
+                <div [ngClass]="['position-relative', 'my-4 ', 'inner--image']">
+                  <img  [ngClass]="['w-100']" src="{{item.content.imagesUrls.big}}"/>
+                </div>
+              </ng-container>
+            </ng-template>
+            <ng-template #elseif2Template>
+              <ng-container *ngIf="item.type === 'related'" >
+                <div [ngClass]="['read--more--bullet', 'position-relative my-4']">
+                  <div [ngClass]="['six--small--article']">
+                    <h2 [ngClass]="['font-weight-bold', 'f-30']">اقرأ المزيد</h2>
+                    <div>
+                      <div  *ngFor="let related of item.content" [ngClass]="['col-12 col-sm-6 ' , 'article--item' , 'col-md-6']">
+                        <a (click)="fetchApitest(related.id)" [routerLink]="['/news',related.id]">
+                          <div [ngClass]="['article--image']">
+                            <img src="{{related.mainImage.imagesUrls.big}}">
+                          </div>
+                          <div [ngClass]="['article--content ']">
+                            {{related.title}}
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-template>
+
           </div>
+          <p class="Pdate">{{ news.publishedAtFormatted }}</p>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
+<!-- [innerHTML]="news.content[0].content" -->

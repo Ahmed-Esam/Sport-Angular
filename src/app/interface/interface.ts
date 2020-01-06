@@ -1,5 +1,0 @@
-export interface Interface {
-  data:[
-
-  ]
-}
