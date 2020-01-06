@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewsComponent implements OnInit {
 
-
+  
   constructor(private ser: ServersService,private route: ActivatedRoute) { }
   articles;
   news: any;
