@@ -10,25 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewsComponent implements OnInit {
 
-  
+
   constructor(private ser: ServersService,private route: ActivatedRoute) { }
   articles;
   news: any;
   // news: any = [];
   paramId;
-IntializeId(){
-  this.route.paramMap.subscribe(params => {
-    this.paramId = params.get('id')
-     console.log(this.paramId)
-   });
-}
+  IntializeId(){
+    this.route.paramMap.subscribe(params => {
+      this.paramId = params.get('id')
+      console.log(this.paramId)
+    });
+  }
   fetchApitest(id){
-
     return this.articles = this.ser.getArticles(id).subscribe((res:any) =>{
       this.news = res.data
       console.log(this.news)
       console.log(this.news.mainImage.imagesUrls.lowOriginal)
-
     })
   }
 

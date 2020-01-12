@@ -16,4 +16,10 @@ export class ServersService {
   }
 
 
+  getSearch(KeyName) {
+    console.log("search name" +KeyName)
+    return this.http.get(`https://api.anaventures.net/api/v1/fe/search?q=${KeyName}&order=most&type=news&&order=desc&page=1`)
+  }
+
+
 }
