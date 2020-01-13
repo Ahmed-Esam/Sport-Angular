@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ServersService } from './../../Servers/servers.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router'
@@ -9,7 +9,7 @@ import { HeaderComponent } from 'src/app/layout/header/header.component';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent  {
 
   // @Input() serverName
   // @ViewChild(HeaderComponent , {static : false}) Search : HeaderComponent
@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   data: any;
   constructor(private ser:ServersService ,private route: ActivatedRoute, private router:Router) {
     route.params.subscribe(val => {
-     this.ngOnInit();
+     this.InitPage();
     });
    }
 
@@ -30,12 +30,13 @@ export class SearchComponent implements OnInit {
   getSearchs(query){
     return this.Search = this.ser.getSearch(query).subscribe((res:any) => {
       this.data = res.data
+      console.log(this.data)
     })
   }
 
 
 
-  ngOnInit() {
+  InitPage() {
     // return this.ser.testName = this.getSearchs(this.KeyName);
     this.IntializeSearchParameter()
     this.getSearchs(this.Keys)

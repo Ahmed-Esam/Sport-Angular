@@ -1,17 +1,20 @@
 <div class="container">
   <div class="row">
-    <div *ngFor="let item of data" class="col-sm-6 col-md-4">
-      <a [routerLink]="['/news',item.id]">
-        <div class="thumbnail">
-          <img src="{{ item.mainImage.imagesUrls.big }}" alt="...">
-          <div class="caption">
-            <h3>{{ item.title }}</h3>
-            <p> {{ item.__description }} </p>
-            <span> {{ item.publishedAtFormatted }} </span>
+    <p *ngIf="data==undefined || data.length<=0; else elseifTemplate" class="alert alert-danger text-center">لا يوجد بيانات</p>
+    <ng-template #elseifTemplate>
+      <div *ngFor="let item of data" class="col-sm-6 col-md-4">
+        <a [routerLink]="['/news',item.id]">
+          <div class="thumbnail">
+            <img src="{{ item.mainImage.imagesUrls.big }}" alt="...">
+            <div class="caption">
+              <h3>{{ item.title }}</h3>
+              <p> {{ item.__description }} </p>
+              <span> {{ item.publishedAtFormatted }} </span>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+    </ng-template>
   </div>
 </div>
 
