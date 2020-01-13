@@ -15,20 +15,21 @@ export class SearchComponent implements OnInit {
   // @ViewChild(HeaderComponent , {static : false}) Search : HeaderComponent
   Search;
   data: any;
-  constructor(private ser:ServersService ,private route: ActivatedRoute, private router:Router) { }
+  constructor(private ser:ServersService ,private route: ActivatedRoute, private router:Router) {
+    route.params.subscribe(val => {
+     this.ngOnInit();
+    });
+   }
 
   Keys;
   IntializeSearchParameter(){
     this.route.paramMap.subscribe(params => {
       this.Keys = params.get('name')
-      console.log(this.Keys)
     });
   }
-  getSearchs(){
-    console.log("parameter name : " + this.Keys)
-    return this.Search = this.ser.getSearch(this.Keys).subscribe((res:any) => {
+  getSearchs(query){
+    return this.Search = this.ser.getSearch(query).subscribe((res:any) => {
       this.data = res.data
-       console.log(this.data)
     })
   }
 
@@ -37,7 +38,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // return this.ser.testName = this.getSearchs(this.KeyName);
     this.IntializeSearchParameter()
-    this.getSearchs()
+    this.getSearchs(this.Keys)
     //console.log(this.getSearchs(this.Keys))
   }
 

@@ -11,20 +11,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private ser:ServersService, private router:Router) { }
 
-  //  serverName;
-  // val;
+
   SeTests
 
   OnInput(value) {
-    // this.serverName = value;
     this.SeTests =  value;
-    console.log(this.SeTests)
-    this.ser.getSearch(this.SeTests)
-
     this.router.navigate(["search", this.SeTests]);
-
   }
-
 
   ngOnInit() {
 
